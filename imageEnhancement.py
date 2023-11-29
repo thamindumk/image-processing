@@ -17,7 +17,9 @@ img_path = "SampleImage.png"
 
 rgbimage = cv2.imread(img_path)
 # convert to grayscale
+
 image = np.round(rgb2gray(rgbimage))
+cv2.imwrite('grayscale.png', image)
 
 """calculate SNR"""
 
@@ -279,8 +281,9 @@ def applyContrastStretching(image):
 
 """
 
-# apply mean filter
+# plot input image histogram
 plotHistrogram(calculateHistrogram(image))
+# apply mean filter
 output_img_mean = meanFilter(image, 7)
 cv2.imwrite('mean.png', output_img_mean)
 
@@ -376,7 +379,11 @@ plotHistrogram(calculateHistrogram(mean_laplacian_clip))
 
 """Histrogram of the final Image: I choose the ***mean-Laplacian-clip*** image as my final image"""
 
-plotHistrogram(calculateHistrogram(mean_laplacian_clip))
+final_image = meanFilter(mean_laplacian_clip, 3)
+cv2.imwrite('final_image.png', final_image)
+plt.imshow(final_image, cmap='gray')
+plt.title('final Image')
+plotHistrogram(calculateHistrogram(final_image))
 
 """
 
