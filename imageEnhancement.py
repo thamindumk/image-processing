@@ -13,7 +13,7 @@ def rgb2gray(rgb):
   return gray
 
 # Provide the image path here
-img_path = "/content/SampleImage.png"
+img_path = "SampleImage.png"
 
 rgbimage = cv2.imread(img_path)
 # convert to grayscale
